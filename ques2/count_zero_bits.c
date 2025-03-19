@@ -10,37 +10,35 @@ int palindrome(char s[ ]){
     int right = strlen(s) - 1;
 
     while (left < right) {
-        /* skip if tas/space*/
+        // skip if tas/space
         while (left < right && (s[left]=='\t' || s[left]==' '))
 			left++;
         while (left < right && (s[right]=='\t' || s[right]==' '))
 			right--;
-        /*comparing char*/
+        //comparing char
         if (s[left]-s[right]) {
-            return 0; /*not palindrome*/ 
+            return 0; // not palindrome
         }
         left++;
         right--;
     }
 
-    return 1; /*palindrome*/ 
+    return 1; // palindrome
 }
 
 int main() {
-	char input[81]; /*place to 80 char. for finish - '\0'*/
+	char input[81]; //place to 80 char. for finish - '\0'
 
     printf("Enter a string (max 80 chars): ");
     fgets(input, sizeof(input), stdin);
 
     printf("You entered: %s\n", input);
 	int len = strlen(input);
-    if (len > 0 && input[len - 1] == '\n'){
+    if (len > 0 && input[len - 1] == '\n')
         input[len - 1] = '\0';
-    }
-   if (palindrome(input))
+	if (palindrome(input))
 		printf("the text is a palindrome\n");
 	else
 		printf("the text is NOT a palindrome\n");
     return 0;
-
 }
