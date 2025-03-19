@@ -10,14 +10,13 @@ int palindrome(char s[ ]){
     int right = strlen(s) - 1;
 
     while (left < right) {
-        // דילוג על תווים לא אותיות/ספרות (אם רוצים להתעלם מרווחים
-        while (left < right && !isalnum(( char)s[left]))
+        // skip if tas/space
+        while (left < right && (s[left]=='\t' || s[left]==' '))
 			left++;
-        while (left < right && !isalnum(( char)s[right]))
+        while (left < right && (s[right]=='\t' || s[right]==' '))
 			right--;
-        // השוואת תווים תוך התעלמות מהבדלי אותיות גדולות/קטנות
-		int sum=(s[left]-s[right]);
-        if (sum) {
+        //comparing char
+        if (s[left]-s[right]) {
             return 0; // not palindrome
         }
         left++;
