@@ -1,70 +1,45 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-#define LOWERCASE_A 'a'
-#define LOWERCASE_Z 'z'
-#define UPPERCASE_A 'A'
-#define UPPERCASE_Z 'Z'
-#define DIGIT_0 '0'
-#define DIGIT_9 '9'
-#define QUOTE '"'
-#define PERIOD '.'
-#define ON 1
-#define OFF 0
-#define ASCIIGAP 32
-/*the program processes text with the following transformations:
-1. remove digits
-2. Capitalizes the first letter after a period
-3. Capitalizes within double quotes
-4.lowercase outside double quotes
-5. Capitalizes in case of one quotes the 
+/*the program check if text is a palindrome
 */
-int main() {
-	int fcap = ON;/*flag to Capitalizes*/
-	int fquot = OFF;/*flag to Quotation marks*/
-	char c;
 
-	printf("Please enter text to be formatted:");	
-	printf("\n");	
-	while((c=getchar()) != EOF)
-	{
-		if(c>=DIGIT_0 && c<=DIGIT_9)/* remove digits*/
-		{
-			continue;
-		}else if(fquot && c>=LOWERCASE_A && c<=LOWERCASE_Z)/*Capitalizes between Quotation marks*/
-		{
-			putchar(c-ASCIIGAP);
-			continue;
-		}else if(fquot==OFF && c==QUOTE)/*start Quotation marks flag*/
-		{
-			putchar(c);
-			fquot++;
-			continue;
-		}else if(fquot==ON && c==QUOTE)/*end Quotation marks flag*/
-		{
-			putchar(c);
-			fquot--;
-			continue;
-		}else if(fquot==OFF && fcap && ((c>=LOWERCASE_A && c<=LOWERCASE_Z)||(c>=UPPERCASE_A && c<=UPPERCASE_Z)))/*new sentence*/
-		{
-			if(c>=UPPERCASE_A && c<=UPPERCASE_Z)/*if already capitalized */
-			{
-				putchar(c);		
-			}else/*else switch to capitalized*/
-			{
-				putchar(c-ASCIIGAP);	
-			}
-			fcap--;/*turn off capitalized flag*/
-			continue;
-		}else if(fquot==OFF && c=='.' && fcap==OFF)/*turn on capitalized letter flag*/
-		{
-			fcap++;
-		}else if(fquot==OFF && c>=UPPERCASE_A && c<=UPPERCASE_Z)/*Lowercase letter*/
-		{
-		putchar(c+ASCIIGAP);
-		continue;
-		}
-		putchar(c);/*print other characters*/
-	}
-	printf("\n");
-	return 0;
+int palindrome(char s[ ]){
+	int left = 0;
+    int right = strlen(s) - 1;
+
+    while (left < right) {
+        // דילוג על תווים לא אותיות/ספרות (אם רוצים להתעלם מרווחים
+        while (left < right && !isalnum(( char)s[left]))
+			left++;
+        while (left < right && !isalnum(( char)s[right]))
+			right--;
+        // השוואת תווים תוך התעלמות מהבדלי אותיות גדולות/קטנות
+		int sum=(s[left]-s[right]);
+        if (sum) {
+            return 0; // not palindrome
+        }
+        left++;
+        right--;
+    }
+
+    return 1; // palindrome
+}
+
+int main() {
+	char input[81]; //place to 80 char. for finish - '\0'
+
+    printf("Enter a string (max 80 chars): ");
+    fgets(input, sizeof(input), stdin);
+
+    printf("You entered: %s\n", input);
+	int len = strlen(input);
+    if (len > 0 && input[len - 1] == '\n')
+        input[len - 1] = '\0';
+	if (palindrome(input))
+		printf("the text is a palindrome\n");
+	else
+		printf("the text is NOT a palindrome\n");
+    return 0;
 }
