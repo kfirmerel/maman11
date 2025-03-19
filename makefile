@@ -1,4 +1,4 @@
-letters: letters.o
-	gcc -g -ansi -Wall -pedantic letters.o -o letters
-letters.o: letters.c
-	gcc -c -ansi -Wall letters.c -o letters.o
+letters: palindrome.o
+	gcc -g -ansi -Wall -pedantic palindrome.o -o palindrome
+letters.o: palindrome.c
+	gcc -c -ansi -Wall palindrome.c -o palindrome.o
