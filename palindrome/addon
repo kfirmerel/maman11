@@ -1,0 +1,5 @@
+#define isok(c) (((c) >= 'a' && (c) <= 'z') || ((c) >= 'A' && (c) <= 'Z') || ((c) >= '0' && (c) <= '9') || ((c) == ' ') || ((c) == '\t')) /* macro to make sure the char is a letter or a number */
+if (!isok(s[left]) || !isok(s[right])){ /*check if the char is a letter or a number*/ 
+    printf("The string is not include only letters and numbers\n");
+    return 0;
+} 
