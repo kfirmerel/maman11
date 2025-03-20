@@ -1,9 +1,12 @@
-#include <stdio.h>
+/* :תשובה לשאלה 1
+להבנתי מהשאלה אני איני בודק שהפלט הוא רק אותיות ולכן זה יעבוד 
+לכל בדיקה של מחרוזת שתכיל גם מספרים וסימנים לדוגמא : 12#$#21 יחשבת כפולינדרום*/
+#include <stdio.h> 
 #include <string.h>
 int palindrome(char s[]){ /* function to check if the string is a palindrome */
-    int left = 0;  
-    int right = strlen(s) - 1;
-    while (left<right){
+    int left = 0;  /*left index*/
+    int right = strlen(s) - 1; /*right index*/
+    while (left<right){ 
         if (s[left] == ' ' || s[left] == '\t'){ /*skip if tab/space */
             left++;
             continue;
