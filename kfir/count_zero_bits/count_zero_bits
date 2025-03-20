@@ -1,6 +1,24 @@
 #include <stdio.h> 
 #include <string.h>
 
-int count_zero_bits(int n) {
-    s 
+int count_zero_bits(unsigned int n) {
+    int count = 0;
+    while (n){
+        if ( n & 0 == 0){
+            count++;
+            n >> 1;
+        }
+    }
+    return count;   
 }
+int main(){
+    unsigned int n = 0;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    printf("The number of zero bits in %d is %d\n", n, count_zero_bits(n));
+    return 0;
+}
+
+    
+
+    
