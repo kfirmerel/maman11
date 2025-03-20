@@ -2,7 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-/*the program check if text is a palindrome
+/*the program check how many 0 in binary representation of a number
 */
 
 int bits_zero_c(unsigned int n){
