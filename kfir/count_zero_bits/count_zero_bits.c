@@ -15,10 +15,10 @@ int count_zero_bits(unsigned int n) {  /* function to count the number of zero b
     return count;   
 }
 int main(){
-    unsigned int n; /*the number to check*/
-    printf("Enter a number: ");
-    scanf("%u", &n);
-    printf("The number of zero bits in %u is %d\n", n, count_zero_bits(n));
+    unsigned int u; /*the number to check*/
+    printf("please Enter an unsigned Integer in decimal base:\n");
+    scanf("%u", &u);
+    printf("The number of zero bits in %u is %d\n", u, count_zero_bits(u));
     return 0;
 }
     
