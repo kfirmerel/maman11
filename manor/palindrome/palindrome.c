@@ -23,7 +23,7 @@ int palindrome(char s[ ]){
         right--;
     }
 
-    return 1; /*palindromeb*/ 
+    return 1; /*palindrome*/ 
 }
 
 int main() {
